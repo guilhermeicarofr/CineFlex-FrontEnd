@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export default function TopBar() {
     return (
-        <TopBarTitle>CINEFLEX</TopBarTitle>
+        <TopBarContainer>CINEFLEX</TopBarContainer>
     );
 }
 
-const TopBarTitle = styled.div`
+const TopBarContainer = styled.div`
     width: 100%;
     height: 67px;
     background-color: #C3CFD9;
