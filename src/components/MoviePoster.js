@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 
-export default function Movie({img}) {
+export default function MoviePoster({img}) {
     return (
-        <MovieContainer>
+        <PosterContainer>
             <img src={img} alt='' />
-        </MovieContainer>
+        </PosterContainer>
     );
 }
 
-const MovieContainer = styled.li`
-    
+const PosterContainer = styled.li`
     width: 145px;
     max-height: 290px;
     padding: 8px;
     margin: 10px 15px;
     border: 1px solid #FFFFFF;
+    border-radius: 3px;
     box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.2);
     img {
         width: 129px;

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
-import Movie from "./Movie";
+import MoviePoster from "./MoviePoster";
 
 export default function Catalog() {
 
@@ -22,7 +22,7 @@ export default function Catalog() {
             <ul>
                 {movies.map((movie, index) => 
                     <Link key={index} to={`/filme/${movie.id}`}>
-                        <Movie img={movie.posterURL} />
+                        <MoviePoster img={movie.posterURL} />
                     </Link>
                 )}
             </ul>
