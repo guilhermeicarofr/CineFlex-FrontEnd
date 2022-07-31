@@ -24,7 +24,7 @@ const DayContainer = styled.li`
     padding: 10px 24px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-around   ;
     h3 {
         font-size: 20px;
         font-weight: 400;
