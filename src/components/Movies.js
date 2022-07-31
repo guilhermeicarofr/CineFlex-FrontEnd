@@ -11,8 +11,8 @@ export default function Catalog() {
     
     useEffect(() => {
         const promise = get('https://mock-api.driven.com.br/api/v7/cineflex/movies');
-		promise.then(get => {
-			setMovies(get.data);  
+		promise.then(req => {
+			setMovies(req.data);  
 		});
 	}, []);    
 

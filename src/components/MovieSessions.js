@@ -13,7 +13,7 @@ export default function MovieSessions() {
 
     useEffect(() => {
         const promise = get(`https://mock-api.driven.com.br/api/v7/cineflex/movies/${movieId}/showtimes`);
-        promise.then(get => setMovieinfo(get.data));
+        promise.then(req => setMovieinfo(req.data));
     }, [movieId]);
 
     return (
