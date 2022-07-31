@@ -1,5 +1,6 @@
 import { get } from "axios";
 import { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
 import Movie from "./Movie";
@@ -19,7 +20,11 @@ export default function Catalog() {
         <CatalogContainer>
             <h2>Selecione o filme</h2>
             <ul>
-                {movies.map((movie, index) => <Movie key={index} img={movie.posterURL} />)}
+                {movies.map((movie, index) => 
+                    <Link key={index} to={`/filme/${movie.id}`}>
+                        <Movie img={movie.posterURL} />
+                    </Link>
+                )}
             </ul>
         </CatalogContainer>
     );
