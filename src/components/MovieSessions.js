@@ -10,7 +10,7 @@ import SessionFooter from './SessionFooter';
 export default function MovieSessions() {
 
     const [movieinfo, setMovieinfo] = useState('');
-    const { movieId } = useParams();
+    const {movieId} = useParams();
 
     useEffect(() => {
         const promise = get(`https://mock-api.driven.com.br/api/v7/cineflex/movies/${movieId}/showtimes`);

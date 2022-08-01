@@ -9,14 +9,12 @@ import SessionFooter from './SessionFooter';
 export default function Session() {
     
     const [sessioninfo, setSessioninfo] = useState('');
-    const { sessionId } = useParams();
+    const {sessionId} = useParams();
 
     useEffect(() => {
         const promise = get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${sessionId}/seats`);
         promise.then(req => setSessioninfo(req.data));
     }, [sessionId]);
-
-    console.log(sessioninfo);
 
     if(sessioninfo!=='') {
         return (
