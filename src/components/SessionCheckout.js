@@ -1,14 +1,18 @@
 import { useState } from 'react';
+import { post } from 'axios';
 import styled from 'styled-components';
 
-export default function SessionCheckout({selectedSeats}) {
+export default function SessionCheckout({selectedSeats, setReservation}) {
 
     const [name, setName] = useState("");
 	const [cpf, setCpf] = useState("");
 
     function formSubmit(event) {
         event.preventDefault();
-        console.log({name, cpf, ids:selectedSeats});
+        setReservation({name, cpf, ids:selectedSeats});
+        const promise = post('https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many',{name, cpf, ids:selectedSeats});
+        promise.then((response)=>console.log(response.data));
+        promise.catch((response)=>console.log(response.message));
     }
 
     return (

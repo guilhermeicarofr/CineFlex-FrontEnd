@@ -7,7 +7,7 @@ import SessionSeats from './SessionSeats';
 import SessionCheckout from './SessionCheckout';
 import SessionFooter from './SessionFooter';
 
-export default function Session() {
+export default function Session({setReservation}) {
     
     const [sessioninfo, setSessioninfo] = useState('');
     const {sessionId} = useParams();
@@ -24,7 +24,7 @@ export default function Session() {
             <>
                 <SelectTitle>Selecione o(s) assento(s)</SelectTitle>
                 <SessionSeats seats={sessioninfo.seats} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats} />
-                <SessionCheckout selectedSeats={selectedSeats}/>
+                <SessionCheckout selectedSeats={selectedSeats} setReservation={setReservation} />
                 <SessionFooter title={sessioninfo.movie.title} img={sessioninfo.movie.posterURL} weekday={sessioninfo.day.weekday} time={sessioninfo.name} />
             </>
         );
