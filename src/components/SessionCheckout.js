@@ -12,13 +12,18 @@ export default function SessionCheckout({selectedSeats, setReservation, reservat
 
     function formSubmit(event) {
         event.preventDefault();
-        setReservation({...reservation, name, cpf, seats:selectedSeats.map(seat=>seat.number)});
-        const promise = post('https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many',{name, cpf, ids:selectedSeats.map(seat=>seat.id)});
-        promise.then((response) => {
-            console.log(response.data);
-            navigate('/sucesso');
-        });
-        promise.catch((response)=>console.log(response.message));
+
+        if(selectedSeats.length > 0) {
+            setReservation({...reservation, name, cpf, seats:selectedSeats.map(seat=>seat.number)});
+            const promise = post('https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many',{name, cpf, ids:selectedSeats.map(seat=>seat.id)});
+            promise.then((response) => {
+                console.log(response.data);
+                navigate('/sucesso');
+            });
+            promise.catch((response)=>console.log(response.message));
+        } else {
+            alert('Nenhum assento selecionado');
+        }
     }
 
     return (
