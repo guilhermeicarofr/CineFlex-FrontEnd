@@ -10,9 +10,7 @@ import SuccessScreen from './SuccessScreen';
 export default function App() {
 
   const [returnbtn, setReturnbtn] = useState(false);
-
   const [reservation, setReservation] = useState({});
-  console.log(reservation);
 
   return (
     <>

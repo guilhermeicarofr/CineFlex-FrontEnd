@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { post } from 'axios';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 export default function SessionCheckout({selectedSeats, setReservation, reservation}) {
 
-    const [name, setName] = useState("");
-	const [cpf, setCpf] = useState("");
+    const [name, setName] = useState('');
+	const [cpf, setCpf] = useState('');
 
     let navigate = useNavigate();
 
@@ -24,11 +24,11 @@ export default function SessionCheckout({selectedSeats, setReservation, reservat
     return (
         <CheckoutForm>
             <form onSubmit={formSubmit}>
-                <label htmlFor="name">Nome do comprador:</label>
-                <input value={name} onChange={event => setName(event.target.value)} type="text" id="name" placeholder="Digite seu nome..." required />
-                <label htmlFor="cpf">CPF do comprador:</label>
-                <input value={cpf} onChange={event => setCpf(event.target.value)} type="number" id="cpf" placeholder="Digite seu CPF..." required />
-                <button type="submit">Reservar assento(s)</button>
+                <label htmlFor='name'>Nome do comprador:</label>
+                <input value={name} onChange={event => setName(event.target.value)} type='text' id='name' placeholder='Digite seu nome...' required />
+                <label htmlFor='cpf'>CPF do comprador:</label>
+                <input value={cpf} onChange={event => setCpf(event.target.value)} type='number' id='cpf' placeholder='Digite seu CPF...' required />
+                <button type='submit'>Reservar assento(s)</button>
             </form>
         </CheckoutForm>
     );
