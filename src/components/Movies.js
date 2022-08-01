@@ -1,9 +1,10 @@
-import { get } from "axios";
+import { get } from 'axios';
 import { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import MoviePoster from "./MoviePoster";
+import SelectTitle from './SelectTitle';
+import MoviePoster from './MoviePoster';
 
 export default function Catalog() {
 
@@ -18,7 +19,7 @@ export default function Catalog() {
 
     return (
         <CatalogContainer>
-            <h2>Selecione o filme</h2>
+            <SelectTitle>Selecione o filme</SelectTitle>
             <ul>
                 {movies.map((movie, index) => 
                     <Link key={index} to={`/filme/${movie.id}`}>
@@ -33,19 +34,6 @@ export default function Catalog() {
 const CatalogContainer = styled.main`
     width: 100%;
     height: auto;
-    h2 {
-        width: 100%;
-        height: 110px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 24px;
-        font-weight: 400;
-        position: fixed;
-        top: 67px;
-        background-color: #FFFFFF;
-        z-index: 1;
-    }
     ul {
         margin-top: 177px;
         display: flex;
