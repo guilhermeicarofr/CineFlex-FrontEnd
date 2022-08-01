@@ -2,24 +2,23 @@ import styled from 'styled-components';
 
 import Seat from './Seat';
 
-export default function SessionSeats({seats}) {
-
+export default function SessionSeats({seats, selectedSeats, setSelectedSeats}) {
     return (
         <>
             <SeatsContainer>
-                {seats.map((seat) => <Seat key={seat.id} available={seat.isAvailable} >{seat.name}</Seat>)}
+                {seats.map((seat, index) => <Seat key={index} id={seat.id} available={seat.isAvailable} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats}>{seat.name}</Seat>)}
             </SeatsContainer>
             <SeatsSubtitles>
                 <span>
-                    <Seat> </Seat>
+                    <SeatExample type={'selected'}> </SeatExample>
                     Selecionado
                 </span>
                 <span>
-                    <Seat> </Seat>
+                    <SeatExample> </SeatExample>
                     Disponível
                 </span>
                 <span>
-                    <Seat> </Seat>
+                    <SeatExample type={'reserved'}> </SeatExample>
                     Indisponível
                 </span>
             </SeatsSubtitles>
@@ -50,4 +49,19 @@ const SeatsSubtitles = styled.div`
         align-items: center;
         justify-content: center;
     }
+`;
+
+const SeatExample = styled.div`
+    width: 26px;
+    height: 26px;
+    border-radius: 13px;
+    background-color: #C3CFD9;
+    border: 1px solid #808F9D;
+    margin-bottom: 5px;
+    ${props => (props.type==='reserved') ? (
+        'background-color: #FBE192; border: 1px solid #F7C52B;'
+    ) : ''}
+    ${props => (props.type==='selected') ? (
+        'background-color: #75cd43; border: 1px solid #759955;'
+    ) : ''}
 `;

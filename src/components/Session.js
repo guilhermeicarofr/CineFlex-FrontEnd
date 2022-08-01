@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import SelectTitle from './SelectTitle';
 import SessionSeats from './SessionSeats';
+import SessionCheckout from './SessionCheckout';
 import SessionFooter from './SessionFooter';
 
 export default function Session() {
@@ -16,12 +17,14 @@ export default function Session() {
         promise.then(req => setSessioninfo(req.data));
     }, [sessionId]);
 
+    const [selectedSeats, setSelectedSeats] = useState([]);
+
     if(sessioninfo!=='') {
         return (
             <>
                 <SelectTitle>Selecione o(s) assento(s)</SelectTitle>
-                <SessionSeats seats={sessioninfo.seats} />
-                {/* <SessionCheckout /> */}
+                <SessionSeats seats={sessioninfo.seats} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats} />
+                <SessionCheckout selectedSeats={selectedSeats}/>
                 <SessionFooter title={sessioninfo.movie.title} img={sessioninfo.movie.posterURL} weekday={sessioninfo.day.weekday} time={sessioninfo.name} />
             </>
         );

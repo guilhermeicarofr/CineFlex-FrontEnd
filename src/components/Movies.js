@@ -22,7 +22,7 @@ export default function Catalog() {
             <SelectTitle>Selecione o filme</SelectTitle>
             <ul>
                 {movies.map((movie, index) => 
-                    <Link key={index} to={`/filme/${movie.id}`}>
+                    <Link key={index} to={`/sessoes/${movie.id}`}>
                         <MoviePoster img={movie.posterURL} />
                     </Link>
                 )}

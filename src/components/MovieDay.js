@@ -7,7 +7,7 @@ export default function MovieDay({day}) {
             <h3>{day.weekday} - {day.date}</h3>
             <div>
                 {day.showtimes.map((showtime, index) =>
-                    <Link key={index} to={`/sessao/${showtime.id}`} >
+                    <Link key={index} to={`/assentos/${showtime.id}`} >
                         <SessionButton>
                             {showtime.name}
                         </SessionButton>

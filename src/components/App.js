@@ -12,8 +12,8 @@ export default function App() {
         <TopBar />
         <Routes>
           <Route path='/' element={<Movies />} />
-          <Route path='/filme/:movieId' element={<MovieSessions />} />
-          <Route path='/sessao/:sessionId' element={<Session />} />
+          <Route path='/sessoes/:movieId' element={<MovieSessions />} />
+          <Route path='/assentos/:sessionId' element={<Session />} />
         </Routes>
       </BrowserRouter>
     </>
