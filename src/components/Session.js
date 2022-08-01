@@ -7,14 +7,17 @@ import SessionSeats from './SessionSeats';
 import SessionCheckout from './SessionCheckout';
 import SessionFooter from './SessionFooter';
 
-export default function Session({setReservation}) {
+export default function Session({setReservation, reservation}) {
     
     const [sessioninfo, setSessioninfo] = useState('');
     const {sessionId} = useParams();
 
     useEffect(() => {
         const promise = get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${sessionId}/seats`);
-        promise.then(req => setSessioninfo(req.data));
+        promise.then(req => {
+            setSessioninfo(req.data);
+            setReservation({title: req.data.movie.title, date: req.data.day.date, time: req.data.name});
+        });
     }, [sessionId]);
 
     const [selectedSeats, setSelectedSeats] = useState([]);
@@ -24,7 +27,7 @@ export default function Session({setReservation}) {
             <>
                 <SelectTitle>Selecione o(s) assento(s)</SelectTitle>
                 <SessionSeats seats={sessioninfo.seats} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats} />
-                <SessionCheckout selectedSeats={selectedSeats} setReservation={setReservation} />
+                <SessionCheckout selectedSeats={selectedSeats} setReservation={setReservation} reservation={reservation}/>
                 <SessionFooter title={sessioninfo.movie.title} img={sessioninfo.movie.posterURL} weekday={sessioninfo.day.weekday} time={sessioninfo.name} />
             </>
         );

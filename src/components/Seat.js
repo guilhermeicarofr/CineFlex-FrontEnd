@@ -7,10 +7,10 @@ export default function Seat({children, id, available, selectedSeats, setSelecte
 
     function handleSelection() {
         setSelected(!selected);
-        if(selectedSeats.includes(id)) {
-            setSelectedSeats(selectedSeats.filter(seat => seat!==id));
+        if(selectedSeats.filter(seat => seat.id===id).length>0) {
+            setSelectedSeats(selectedSeats.filter(seat => seat.id!==id));
         } else {
-            setSelectedSeats([...selectedSeats, id]);
+            setSelectedSeats([...selectedSeats, {id, number: children}]);
         }
     }
 
