@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import styled from 'styled-components';
 
-export default function SuccessScreen({reservation}) {
+export default function SuccessScreen({reservation, setReturnbtn}) {
 
     let navigate = useNavigate();
+
+    setReturnbtn(false);
 
     return (
         <SuccessMessage>

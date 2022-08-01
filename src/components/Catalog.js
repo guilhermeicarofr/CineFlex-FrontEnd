@@ -6,9 +6,11 @@ import styled from 'styled-components';
 import SelectTitle from './SelectTitle';
 import MoviePoster from './MoviePoster';
 
-export default function Catalog() {
+export default function Catalog({setReturnbtn}) {
 
     const [movies, setMovies] = useState([]);
+
+    setReturnbtn(false);
     
     useEffect(() => {
         const promise = get('https://mock-api.driven.com.br/api/v7/cineflex/movies');

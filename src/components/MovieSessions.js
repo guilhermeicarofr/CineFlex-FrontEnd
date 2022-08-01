@@ -7,10 +7,12 @@ import SelectTitle from './SelectTitle';
 import MovieDay from './MovieDay';
 import SessionFooter from './SessionFooter';
 
-export default function MovieSessions() {
+export default function MovieSessions({setReturnbtn}) {
 
     const [movieinfo, setMovieinfo] = useState('');
     const {movieId} = useParams();
+
+    setReturnbtn(true);
 
     useEffect(() => {
         const promise = get(`https://mock-api.driven.com.br/api/v7/cineflex/movies/${movieId}/showtimes`);

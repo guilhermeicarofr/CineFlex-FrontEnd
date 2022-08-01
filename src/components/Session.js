@@ -7,10 +7,12 @@ import SessionSeats from './SessionSeats';
 import SessionCheckout from './SessionCheckout';
 import SessionFooter from './SessionFooter';
 
-export default function Session({setReservation, reservation}) {
+export default function Session({setReservation, reservation, setReturnbtn}) {
     
     const [sessioninfo, setSessioninfo] = useState('');
     const {sessionId} = useParams();
+
+    setReturnbtn(true);
 
     useEffect(() => {
         const promise = get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${sessionId}/seats`);
@@ -18,7 +20,7 @@ export default function Session({setReservation, reservation}) {
             setSessioninfo(req.data);
             setReservation({title: req.data.movie.title, date: req.data.day.date, time: req.data.name});
         });
-    }, [sessionId]);
+    }, [sessionId, setReservation]);
 
     const [selectedSeats, setSelectedSeats] = useState([]);
 
