@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import SelectTitle from './SelectTitle';
 import MoviePoster from './MoviePoster';
+import Loading from './Loading';
 
 export default function Catalog({setReturnbtn}) {
 
@@ -20,16 +21,21 @@ export default function Catalog({setReturnbtn}) {
 	}, []);    
 
     return (
-        <CatalogContainer>
-            <SelectTitle>Selecione o filme</SelectTitle>
-            <ul>
-                {movies.map((movie, index) => 
-                    <Link key={index} to={`/sessoes/${movie.id}`}>
-                        <MoviePoster img={movie.posterURL} />
-                    </Link>
-                )}
-            </ul>
-        </CatalogContainer>
+        <>
+            {(movies.length>0) ? 
+                <CatalogContainer>
+                    <SelectTitle>Selecione o filme</SelectTitle>
+                        <ul>
+                            {movies.map((movie, index) => 
+                                <Link key={index} to={`/sessoes/${movie.id}`}>
+                                    <MoviePoster img={movie.posterURL} />
+                                </Link>
+                            )}
+                        </ul>
+                </CatalogContainer>
+            : <Loading />        
+            }
+        </>
     );
 }
 

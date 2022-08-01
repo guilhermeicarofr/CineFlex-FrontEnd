@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import SelectTitle from './SelectTitle';
 import MovieDay from './MovieDay';
 import SessionFooter from './SessionFooter';
+import Loading from './Loading';
 
 export default function MovieSessions({setReturnbtn}) {
 
@@ -19,17 +20,20 @@ export default function MovieSessions({setReturnbtn}) {
         promise.then(req => setMovieinfo(req.data));
     }, [movieId]);
 
-    if(movieinfo!=='') {
-        return (
-            <SessionsContainer>
-                <SelectTitle>Selecione o horário</SelectTitle>
-                <ul>
-                    {movieinfo.days.map((day, index) => <MovieDay key={index} day={day} />)}
-                </ul>
-                <SessionFooter title={movieinfo.title} img={movieinfo.posterURL} />
-            </SessionsContainer>
-        );
-    }
+    return (
+        <>
+            {(movieinfo!=='') ? 
+                <SessionsContainer>
+                    <SelectTitle>Selecione o horário</SelectTitle>
+                    <ul>
+                        {movieinfo.days.map((day, index) => <MovieDay key={index} day={day} />)}
+                    </ul>
+                    <SessionFooter title={movieinfo.title} img={movieinfo.posterURL} />
+                </SessionsContainer>
+            : <Loading />
+            }
+        </>
+    );
 }
 
 const SessionsContainer = styled.main`

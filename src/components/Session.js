@@ -6,6 +6,7 @@ import SelectTitle from './SelectTitle';
 import SessionSeats from './SessionSeats';
 import SessionCheckout from './SessionCheckout';
 import SessionFooter from './SessionFooter';
+import Loading from './Loading';
 
 export default function Session({setReservation, reservation, setReturnbtn}) {
     
@@ -24,14 +25,17 @@ export default function Session({setReservation, reservation, setReturnbtn}) {
 
     const [selectedSeats, setSelectedSeats] = useState([]);
 
-    if(sessioninfo!=='') {
-        return (
-            <>
-                <SelectTitle>Selecione o(s) assento(s)</SelectTitle>
-                <SessionSeats seats={sessioninfo.seats} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats} />
-                <SessionCheckout selectedSeats={selectedSeats} setReservation={setReservation} reservation={reservation}/>
-                <SessionFooter title={sessioninfo.movie.title} img={sessioninfo.movie.posterURL} weekday={sessioninfo.day.weekday} time={sessioninfo.name} />
-            </>
-        );
-    }
+    return (
+        <>
+            {(sessioninfo!=='') ? 
+                <>
+                    <SelectTitle>Selecione o(s) assento(s)</SelectTitle>
+                    <SessionSeats seats={sessioninfo.seats} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats} />
+                    <SessionCheckout selectedSeats={selectedSeats} setReservation={setReservation} reservation={reservation}/>
+                    <SessionFooter title={sessioninfo.movie.title} img={sessioninfo.movie.posterURL} weekday={sessioninfo.day.weekday} time={sessioninfo.name} />
+                </>
+            : <Loading />
+            }
+        </>
+    );
 }
